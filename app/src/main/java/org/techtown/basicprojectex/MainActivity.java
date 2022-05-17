@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         //각 모델에 따른 input , output shape 각자 맞게 변환
         // mobilenetcheck.h5 일시 224 * 224 * 3
-        float[][][][] input = new float[1][224][224][3];
+        float[][][][] input = new float[1][600][400][3];
         float[][] output = new float[1][2]; //tflite에 버섯 종류 2개라서 (내기준)
 
         try {
@@ -88,12 +89,12 @@ public class MainActivity extends AppCompatActivity {
             iv.setImageBitmap(bitmap);
 
             // x,y 최댓값 사진 크기에 따라 달라짐 (조절 해줘야함)
-            for (int x = 0; x < 224; x++) {
-                for (int y = 0; y < 224; y++) {
+            for (int x = 0; x < 600; x++) {
+                for (int y = 0; y < 400; y++) {
                     int pixel = bitmap.getPixel(x, y);
-                    input[batchNum][x][y][0] = Color.red(pixel) / 1.0f;
-                    input[batchNum][x][y][1] = Color.green(pixel) / 1.0f;
-                    input[batchNum][x][y][2] = Color.blue(pixel) / 1.0f;
+                    input[batchNum][x][y][0] = (float) Color.red(pixel) / 1.0f;
+                    input[batchNum][x][y][1] = (float) Color.green(pixel) / 1.0f;
+                    input[batchNum][x][y][2] = (float) Color.blue(pixel) / 1.0f;
                 }
             }
 
@@ -107,13 +108,12 @@ public class MainActivity extends AppCompatActivity {
         TextView tv_output = findViewById(R.id.tv_output);
         int i;
 
-        // 텍스트뷰에 무슨 버섯인지 띄우기 but error남
+        // 텍스트뷰에 차량 만차 여부 띄우기 but error남
         for (i = 0; i < 2; i++) {
-            if (output[0][i] * 100 > 90) {
+            if (output[0][i] * 100 > 95) {
                 if (i == 0) {
-                    tv_output.setText(String.format("빈자리 없음  %d %.5f", i, output[0][0] * 100));
-                }
-                else {
+                    tv_output.setText(String.format("빈자리 없음,  %d, %.5f", i, output[0][0] * 100));
+                } else {
                     tv_output.setText(String.format("빈자리 있음, %d, %.5f", i, output[0][1] * 100));
                 }
             } else
