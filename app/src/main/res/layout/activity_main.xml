@@ -24,6 +24,6 @@
             android:id="@+id/tv_output"
             android:layout_width="match_parent"
             android:layout_height="237dp"
-            android:text="Hello World!" />
+            android:text="Hello World!"/>
 
 </LinearLayout>
