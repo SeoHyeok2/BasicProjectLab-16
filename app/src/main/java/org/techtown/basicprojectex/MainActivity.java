@@ -108,19 +108,16 @@ public class MainActivity extends AppCompatActivity {
         int i;
 
         // 텍스트뷰에 무슨 버섯인지 띄우기 but error남
-//        for (i = 0; i < 2; i++) {
-//            if (output[0][i] * 100 > 90) {
-//                if (i == 0) {
-//                    tv_output.setText(String.format("빈자리 없음 %.5f", output[0][0] * 100));
-//                }
-//                else {
-//                    tv_output.setText(String.format("빈자리 있음 %.5f", output[0][1] * 100));
-//                }
-//            }
-//        }
-
-        tv_output.setText(String.format("빈자리 없음 %.5f", output[0][0] * 100));
-//        tv_output2.setText(String.format("빈자리 있음 %.5f", output[0][1] * 100));
-
+        for (i = 0; i < 2; i++) {
+            if (output[0][i] * 100 > 90) {
+                if (i == 0) {
+                    tv_output.setText(String.format("빈자리 없음  %d %.5f", i, output[0][0] * 100));
+                }
+                else {
+                    tv_output.setText(String.format("빈자리 있음, %d, %.5f", i, output[0][1] * 100));
+                }
+            } else
+                continue;
+        }
     }
 }
