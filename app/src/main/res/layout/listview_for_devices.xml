@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_numOfMachine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="기기1"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/stroke"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_numOfMachine">
+
+        <FrameLayout
+            android:id="@+id/frameLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_parking"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:src="@drawable/white_background"/>
+
+            <Button
+                android:id="@+id/button_showCamera"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/googlebutton_background"
+                android:layout_gravity="center"
+                android:text="카메라 보기"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_parkingPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="108동 주차장 앞 (기기 이름)"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_spaceExist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="현재 빈자리 : (유무)"
+        android:textSize="20sp" />
+</LinearLayout>
