@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="X대 연결됨"
+                android:text="(기기 수)대 연결됨"
                 android:textAlignment="center"
                 android:textColor="#000000" />
         </LinearLayout>

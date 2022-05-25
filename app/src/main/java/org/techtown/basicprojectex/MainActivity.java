@@ -2,11 +2,14 @@ package org.techtown.basicprojectex;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,13 +22,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.techtown.basicprojectex.classifier.ImageClassifier;
+
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import org.techtown.basicprojectex.classifier.ImageClassifier;
-import org.techtown.basicprojectex.R;
 
 /**
  * The Main Activity Class
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
      * Requests Codes to identify camera and permission requests
      */
     private static final int CAMERA_PERMISSION_REQUEST_CODE = 1000;
-    private static final int CAMERA_REQEUST_CODE = 10001;
+    private static final int CAMERA_REQUEST_CODE = 10001;
 
     /**
      * UI Elements
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         // initalizing ui elements
         initializeUIElements();
+        getAppKeyHash();
     }
 
     /**
@@ -88,11 +93,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                Log.e("Hash key", something);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e("name not found", e.toString());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         // if this is the result of our camera image request
-        if (requestCode == CAMERA_REQEUST_CODE) {
+        if (requestCode == CAMERA_REQUEST_CODE) {
             // getting bitmap of the image
             Bitmap photo = (Bitmap) Objects.requireNonNull(Objects.requireNonNull(data).getExtras()).get("data");
             // displaying this bitmap in imageview
@@ -167,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void openCamera() {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cameraIntent, CAMERA_REQEUST_CODE);
+        startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
     }
 
     /**
