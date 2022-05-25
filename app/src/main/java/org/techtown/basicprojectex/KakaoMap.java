@@ -9,7 +9,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,11 +31,12 @@ public class KakaoMap extends AppCompatActivity implements MapView.CurrentLocati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kakaomap);
 
-        MapView mapView = new MapView(this);
-
-        RelativeLayout mapViewContainer = (RelativeLayout) findViewById(R.id.MapView);
+        setContentView(R.layout.activity_main);
+        //지도를 띄우자
+        // java code
+        mapView = new MapView(this);
+        mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
         mapView.setMapViewEventListener(this);
         mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);

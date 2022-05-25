@@ -5,27 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".KakaoMap">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
+        android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:text="주소검색"
-            android:textSize="30dp"
-            android:textColor="@color/black"
-            android:gravity="center|right"
-            android:layout_marginBottom="10dp"
-            android:paddingRight="20dp"
-            android:background="@color/white"/>
-        <RelativeLayout
-            android:id="@+id/MapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></RelativeLayout>
-    </LinearLayout>
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
