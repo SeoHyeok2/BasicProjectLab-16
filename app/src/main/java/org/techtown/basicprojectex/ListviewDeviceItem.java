@@ -2,7 +2,13 @@ package org.techtown.basicprojectex;
 
 import android.graphics.drawable.Drawable;
 
-public class ListviewDeviceItem {
+import android.provider.ContactsContract;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.database.*;
+import org.jetbrains.annotations.NotNull;
+
+public class ListviewDeviceItem extends AppCompatActivity {
     // Constant values
     private final static String STATE_FREE = "있음";
     private final static String STATE_FULL = "없음";
@@ -13,6 +19,8 @@ public class ListviewDeviceItem {
     private String recordPosition = "";
     private String machineName = "";
     private Drawable parkingVideo; // 주차장 영상(사진) 표시
+
+    ListviewDeviceItem() {}
 
     //getter / setter
     public int getMachineNumber() {
