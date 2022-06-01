@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +26,11 @@ public class MainActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
+                String value = snapshot.getValue(String.class);
 
+                Log.d("TAG", "값은 " + value + "입니다");
                 ListviewDeviceItem listviewDeviceItem = new ListviewDeviceItem();
-                listviewDeviceItem.setParkState(user.parking_state);
+                listviewDeviceItem.setParkState(value);
             }
 
             @Override
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         moveMain(1);
     }
-
 
 
     private void moveMain(int sec) {

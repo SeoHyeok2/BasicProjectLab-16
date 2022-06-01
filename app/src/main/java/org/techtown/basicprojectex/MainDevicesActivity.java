@@ -56,7 +56,7 @@ public class MainDevicesActivity extends AppCompatActivity {
         item.setMachineName("Galaxy A7");
         item.setParkingVideo(ContextCompat.getDrawable(this, R.drawable.parkinglot_0));
 
-        item.setParkState("분석 중");
+//        item.setParkState("분석 중");
         item.setRecordPosition("108동 주차장 앞");
         item.setMachineNumber(++deviceListSize);
 

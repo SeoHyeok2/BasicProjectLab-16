@@ -15,7 +15,7 @@ public class ListviewDeviceItem extends AppCompatActivity {
 
     // 인스턴스 필드
     private int machineNumber; // 기기 번호
-    private String parkState = STATE_FREE; // 모델이 판단한 주차장 상태
+    private String parkState; // 모델이 판단한 주차장 상태
     private String recordPosition = "";
     private String machineName = "";
     private Drawable parkingVideo; // 주차장 영상(사진) 표시
