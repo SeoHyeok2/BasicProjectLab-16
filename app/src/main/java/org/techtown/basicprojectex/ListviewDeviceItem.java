@@ -3,9 +3,12 @@ package org.techtown.basicprojectex;
 import android.graphics.drawable.Drawable;
 
 import android.provider.ContactsContract;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.*;
+
 import org.jetbrains.annotations.NotNull;
 
 public class ListviewDeviceItem extends AppCompatActivity {
@@ -17,10 +20,11 @@ public class ListviewDeviceItem extends AppCompatActivity {
     private int machineNumber; // 기기 번호
     private String parkState; // 모델이 판단한 주차장 상태
     private String recordPosition = "";
-    private String machineName = "";
     private Drawable parkingVideo; // 주차장 영상(사진) 표시
+    private boolean buttonEnable = true;
 
-    ListviewDeviceItem() {}
+    ListviewDeviceItem() {
+    }
 
     //getter / setter
     public int getMachineNumber() {
@@ -55,11 +59,11 @@ public class ListviewDeviceItem extends AppCompatActivity {
         this.recordPosition = recordPosition;
     }
 
-    public String getMachineName() {
-        return this.machineName;
+    public boolean isButtonEnable() {
+        return buttonEnable;
     }
 
-    public void setMachineName(String machineName) {
-        this.machineName = machineName;
+    public void setButtonEnable(boolean buttonEnable) {
+        this.buttonEnable = buttonEnable;
     }
 }

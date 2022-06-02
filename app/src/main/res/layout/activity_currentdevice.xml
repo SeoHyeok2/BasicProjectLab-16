@@ -53,5 +53,10 @@
             android:text="새로운 기기 추가하기"
             android:textColor="@color/white"/>
 
+        <Button
+            android:id="@+id/exampleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="example"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

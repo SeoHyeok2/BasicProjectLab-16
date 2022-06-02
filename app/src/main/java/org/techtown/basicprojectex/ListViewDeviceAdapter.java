@@ -1,6 +1,8 @@
 package org.techtown.basicprojectex;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class ListViewDeviceAdapter extends ArrayAdapter {
 
     // 생성자로부터 전달된 resource id 값을 저장.
     int resourceId;
+    Handler handler = new Handler();
 
     // ListViewDeviceAdapter 생성자.
     public ListViewDeviceAdapter(@NonNull Context context, int resource,
@@ -54,22 +58,12 @@ public class ListViewDeviceAdapter extends ArrayAdapter {
         ListviewDeviceItem listViewItem = (ListviewDeviceItem) getItem(position);
 
         // 아이템 내 각 위젯에 데이터 반영
-        String currentSpaceState = "현재 빈자리 : " + listViewItem.getParkState();
-        String currentRecording = listViewItem.getRecordPosition() + ", " + listViewItem.getMachineName();
+        String currentSpaceState = listViewItem.getParkState();
+        String currentRecording = listViewItem.getRecordPosition();
         textViewState.setText(currentSpaceState);
         textViewForRecord.setText(currentRecording);
-        textViewOrderOfDevice.setText("기기 " + (pos + 1));
-
-
-        Button buttonShowCamera = (Button) convertView.findViewById(R.id.button_showCamera);
-        buttonShowCamera.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                // buttonShowCamera 클릭 시 버튼 숨김 처리 및 주차 화면 표시하기
-                buttonShowCamera.setVisibility(View.INVISIBLE);
-                buttonShowCamera.setEnabled(false);
-                imageParkingLotView.setImageDrawable(listViewItem.getParkingVideo());
-            }
-        });
+        textViewOrderOfDevice.setText("구역 " + (pos + 1));
+        imageParkingLotView.setImageDrawable(listViewItem.getParkingVideo());
 
         return convertView;
     }

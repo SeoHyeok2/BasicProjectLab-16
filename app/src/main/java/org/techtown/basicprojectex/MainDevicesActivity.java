@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,10 +23,12 @@ public class MainDevicesActivity extends AppCompatActivity {
 
         ListView listView;
         ListViewDeviceAdapter adapter;
+        TextView tvConnectedDevice = findViewById(R.id.tv_connectedDevice);
         ArrayList<ListviewDeviceItem> items = new ArrayList<>();
 
         //item loading...
         loadItems(items);
+        tvConnectedDevice.setText("현재 " + deviceListSize + " 개 구역");
 
         //adapter 생성
         adapter = new ListViewDeviceAdapter(this, R.layout.listview_for_devices, items);
@@ -53,10 +56,9 @@ public class MainDevicesActivity extends AppCompatActivity {
 
         // 아이템 생성.
         item = new ListviewDeviceItem();
-        item.setMachineName("Galaxy A7");
         item.setParkingVideo(ContextCompat.getDrawable(this, R.drawable.parkinglot_0));
 
-//        item.setParkState("분석 중");
+        item.setParkState("분석 중");
         item.setRecordPosition("108동 주차장 앞");
         item.setMachineNumber(++deviceListSize);
 

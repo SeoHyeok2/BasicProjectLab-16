@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_numOfMachine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="기기1"
+        android:text="구역 1"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp"
         android:textColor="#000000"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -22,28 +25,12 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/tv_numOfMachine">
 
-        <FrameLayout
-            android:id="@+id/frameLayout1"
+        <ImageView
+            android:id="@+id/img_parking"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/img_parking"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:src="@drawable/white_background"/>
-
-            <Button
-                android:id="@+id/button_showCamera"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/googlebutton_background"
-                android:layout_gravity="center"
-                android:text="카메라 보기"
-                android:textColor="@color/white" />
-        </FrameLayout>
-
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:src="@drawable/white_background" />
 
     </LinearLayout>
 
@@ -51,13 +38,43 @@
         android:id="@+id/tv_parkingPosition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="108동 주차장 앞 (기기 이름)"
+        android:layout_marginLeft="10dp"
+        android:text="(구역명)"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tv_spaceExist"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="현재 빈자리 : (유무)"
-        android:textSize="20sp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="현재 빈자리 :"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_spaceExist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="분석 중"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/guidelineForSector"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginVertical="10dp"
+        android:background="@color/grey"
+        />
 </LinearLayout>

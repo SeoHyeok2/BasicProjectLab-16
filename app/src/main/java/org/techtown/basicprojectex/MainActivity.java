@@ -42,14 +42,12 @@ public class MainActivity extends AppCompatActivity {
         moveMain(1);
     }
 
-
     private void moveMain(int sec) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //new Intent(현재 context, 이동할 activity)
-                Intent intent = new Intent(getApplicationContext(), MainDevicesActivity.class);
-
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);    //intent 에 명시된 액티비티로 이동
 
                 finish();    //현재 액티비티 종료
