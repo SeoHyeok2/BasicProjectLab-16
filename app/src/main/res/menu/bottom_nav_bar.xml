@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_camera"
+        android:enabled="true"
+        android:icon="@drawable/icon_camera"
+        android:title="카메라 확인"/>
+
+    <item
+        android:id="@+id/page_map"
+        android:enabled="true"
+        android:icon="@drawable/icon_spot"
+        android:title="근처 주차장 확인"/>
+</menu>

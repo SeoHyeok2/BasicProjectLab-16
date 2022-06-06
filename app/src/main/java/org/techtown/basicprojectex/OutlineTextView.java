@@ -36,7 +36,6 @@ public class OutlineTextView extends AppCompatTextView {
         strokeColor = type.getColor(R.styleable.OutlineTextView_textStrokeColor, 0xffffffff); // 외곽선
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         if (stroke) {
